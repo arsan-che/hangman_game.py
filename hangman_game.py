@@ -2,14 +2,14 @@ import random
 
 
 class Hangman:
-    def __init__(self, word_list, num_lives=5, **kwargs): 
+    def __init__(self, word_list, num_lives=5, **kwargs): #do i need kwargs?
         self.word = random.choice(word_list)
         self.word_guessed = ['_' for _ in self.word]
         self.num_letters = len(set(self.word))
         self.num_lives = num_lives
         self.word_list = word_list
-        self.list_of_guesses = [] 
-        
+        self.list_of_guesses = [] #why ints in instructions
+
     def check_guess(self, guess):
       guess = guess.lower()
       if guess in self.word:
@@ -23,7 +23,7 @@ class Hangman:
           print(f"Sorry, {guess} is not in the word.")
           self.num_lives -= 1
           print(f"You have {self.num_lives} lives left.")
-    
+
     def ask_for_input(self):
       while True:
         guess = input("Guess the letter: ")
@@ -35,7 +35,7 @@ class Hangman:
           self.list_of_guesses.append(guess)
           self.check_guess(guess)
           break
-      
+
 def play_game(word_list):
   num_lives = 5
   game = Hangman(word_list, num_lives)
